@@ -34,9 +34,16 @@
 
         layer1: layer1 {
             compatible = "zmk,behavior-tap-dance";
-            label = "LAYER";
+            label = "LAYER1";
             #binding-cells = <0>;
             bindings = <&mo 1>, <&tog 1>;
+        };
+
+        layer2: layer2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LAYER2";
+            #binding-cells = <0>;
+            bindings = <&mo 2>, <&tog 2>;
         };
     };
 
@@ -121,7 +128,7 @@
 AS(GRAVE)    AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)                               AS(N6) AS(N7) AS(   N8) AS( N9) AS(  N0) AS(RBKT)
 AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS( Y) AS( U) AS(    I) AS(  O) AS(   P) AS(LBKT)
 &mt LGUI ESC AS( A) AS( S) AS( D) AS( F) AS( G)                               AS( H) AS( J) AS(    K) AS(  L) AS(SEMI) AS( SQT)
-&mo 2        AS( Z) AS( X) AS( C) AS( V) AS( B) &kp K_MUTE   &kp C_PLAY_PAUSE AS( N) AS( M) AS(COMMA) AS(DOT) AS(FSLH) AS(BSLH)
+&layer2      AS( Z) AS( X) AS( C) AS( V) AS( B) &kp K_MUTE   &kp C_PLAY_PAUSE AS( N) AS( M) AS(COMMA) AS(DOT) AS(FSLH) AS(BSLH)
                 &kp KP_DIVIDE &kp KP_MULTIPLY                                                          AS(MINUS) AS(EQUAL)
                              &layer1 &kp LSHFT &kp LALT               &hm RALT DEL &hm RSHFT BSPC &lt 1 ENTER
                                     &kp LCTRL &kp SPACE              &kp SPACE &kp RCTRL
@@ -141,9 +148,9 @@ AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS
 //                     |      |      |      |        |  |       |      |       |       |
             bindings = <
 &trans &kp F1          &kp F2    &kp F3    &kp F4     &kp F5                       &kp F6        &kp F7    &kp F8     &kp F9    &kp F10   &kp F11
-&trans &kp KP_MULTIPLY &kp KP_N7 &kp KP_N8 &kp KP_N9  &kp KP_PLUS                  &kp LC(LA(T)) &kp HOME  &kp UP     &kp END   &kp PG_UP &kp F12
-&trans &kp KP_DIVIDE   &kp KP_N4 &kp KP_N5 &kp KP_N6  &kp KP_MINUS                 &kp LA(F2)    &kp LEFT  &kp DOWN   &kp RIGHT &kp PG_DN &kp CAPS
-&trans &kp KP_N0       &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp KP_DOT   &trans   &trans &email        &kp PSCRN &kp K_CALC &kp K_APP &kp INS   &kp RGUI
+&trans &kp KP_DIVIDE   &kp KP_N7 &kp KP_N8 &kp KP_N9  &kp KP_MINUS                 &kp LC(LA(T)) &kp HOME  &kp UP     &kp END   &kp PG_UP &kp F12
+&trans &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &kp KP_N6  &kp KP_PLUS                  &kp LA(F2)    &kp LEFT  &kp DOWN   &kp RIGHT &kp PG_DN &kp K_APP
+&trans &kp KP_N0       &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp KP_DOT   &trans   &trans &email        &kp PSCRN &kp K_CALC &kp CAPS  &kp INS   &kp RGUI
                     &trans  &trans                                                                                &trans &trans   
                                               &trans &trans &trans             &trans &trans &trans
                                                      &trans &trans             &trans &trans
@@ -162,11 +169,11 @@ AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS
 // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
 //                     |      |      |      |        |  |       |      |       |       |
             bindings = <
-&bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4           &bt BT_SEL 5 &trans &trans &trans &trans &trans
-&out OUT_TOG &trans       &trans       &trans       &trans       &trans                 &trans       &trans &trans &trans &trans &trans
-&bootloader  &trans       &trans       &trans       &trans       &trans                 &trans       &trans &trans &trans &trans &trans
-&trans       &trans       &trans       &trans       &trans       &trans   &trans   &trans &trans     &trans &trans &trans &trans &trans
-                              &trans  &trans                                                                   &trans &trans   
+&bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &bt BT_SEL 5    &kp KP_NUMLOCK  &trans    &trans    &trans       &trans
+&out OUT_TOG &trans       &trans       &trans       &trans       &trans                   &kp KP_DIVIDE   &kp KP_N7       &kp KP_N8 &kp KP_N9 &kp KP_MINUS &trans
+&bootloader  &trans       &trans       &trans       &trans       &trans                   &kp KP_MULTIPLY &kp KP_N4       &kp KP_N5 &kp KP_N6 &kp KP_PLUS  &trans
+&trans       &trans       &trans       &trans       &trans       &trans   &trans   &trans &kp KP_N0       &kp KP_N1       &kp KP_N2 &kp KP_N3 &kp KP_DOT   &trans
+                              &trans  &trans                                                                            &trans &trans   
                                                           &trans &trans &trans        &trans &trans &trans
                                                           &trans &trans               &trans &trans
             >;
