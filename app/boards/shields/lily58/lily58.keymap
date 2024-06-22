@@ -14,11 +14,18 @@
 
 / {
     behaviors {
+        hw_soft_off: hw_soft_off {
+            compatible = "zmk,behavior-soft-off";
+            #binding-cells = <0>;
+            hold-time-ms = <5000>;
+        };
+
         as: auto_shift {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping_term_ms = <175>;
+            tapping_term_ms = <200>;
             quick_tap_ms = <200>;
+            require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -45,6 +52,12 @@
             #binding-cells = <0>;
             bindings = <&mo 2>, <&tog 2>;
         };
+    };
+
+    soft_off_behavior_key {
+        compatible = "zmk,gpio-key-behavior-trigger";
+        bindings = <&hw_soft_off>;
+        key = <&wakeup_key>;
     };
 
     macros {
@@ -101,17 +114,17 @@
             bindings = <&kp END>;
         };
 
-        // combo_left {
-        //     timeout-ms = <50>;
-        //     key-positions = <31 32>;
-        //     bindings = <&kp LEFT>;
-        // };
+        combo_left {
+            timeout-ms = <50>;
+            key-positions = <31 32>;
+            bindings = <&kp LEFT>;
+        };
 
-        // combo_right {
-        //     timeout-ms = <50>;
-        //     key-positions = <32 33>;
-        //     bindings = <&kp RIGHT>;
-        // };
+        combo_right {
+            timeout-ms = <50>;
+            key-positions = <32 33>;
+            bindings = <&kp RIGHT>;
+        };
     };
   
     keymap {
@@ -128,14 +141,14 @@
 AS(GRAVE)    AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)                               AS(N6) AS(N7) AS(   N8) AS( N9) AS(  N0) AS(RBKT)
 AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS( Y) AS( U) AS(    I) AS(  O) AS(   P) AS(LBKT)
 &mt LGUI ESC AS( A) AS( S) AS( D) AS( F) AS( G)                               AS( H) AS( J) AS(    K) AS(  L) AS(SEMI) AS( SQT)
-&layer2      AS( Z) AS( X) AS( C) AS( V) AS( B) &kp K_MUTE   &kp C_PLAY_PAUSE AS( N) AS( M) AS(COMMA) AS(DOT) AS(FSLH) AS(BSLH)
-                &kp KP_DIVIDE &kp KP_MULTIPLY                                                          AS(MINUS) AS(EQUAL)
+&layer2      AS( Z) AS( X) AS( C) AS( V) AS( B) &kp K_MUTE    &hm K_APP ENTER AS( N) AS( M) AS(COMMA) AS(DOT) AS(FSLH) AS(BSLH)
+        &kp KP_DIVIDE  &kp KP_MULTIPLY                                                          AS(MINUS) AS(EQUAL)
                              &layer1 &kp LSHFT &kp LALT               &hm RALT DEL &hm RSHFT BSPC &lt 1 ENTER
                                     &kp LCTRL &kp SPACE              &kp SPACE &kp RCTRL
             >;
 
             sensor-bindings = 
-                <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>
+                <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp UP DOWN>
                 ;
         };
 
@@ -147,17 +160,17 @@ AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS
 // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
 //                     |      |      |      |        |  |       |      |       |       |
             bindings = <
-&trans &kp F1          &kp F2    &kp F3    &kp F4     &kp F5                       &kp F6        &kp F7    &kp F8     &kp F9    &kp F10   &kp F11
-&trans &kp KP_DIVIDE   &kp KP_N7 &kp KP_N8 &kp KP_N9  &kp KP_MINUS                 &kp LC(LA(T)) &kp HOME  &kp UP     &kp END   &kp PG_UP &kp F12
-&trans &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &kp KP_N6  &kp KP_PLUS                  &kp LA(F2)    &kp LEFT  &kp DOWN   &kp RIGHT &kp PG_DN &kp K_APP
-&trans &kp KP_N0       &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp KP_DOT   &trans   &trans &email        &kp PSCRN &kp K_CALC &kp CAPS  &kp INS   &kp RGUI
+&trans &kp F1          &kp F2    &kp F3    &kp F4     &kp F5                                  &kp F6        &kp F7    &kp F8     &kp F9    &kp F10   &kp F11
+&trans &kp KP_DIVIDE   &kp KP_N7 &kp KP_N8 &kp KP_N9  &kp KP_MINUS                            &kp LC(LA(T)) &kp HOME  &kp UP     &kp END   &kp PG_UP &kp F12
+&trans &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &kp KP_N6  &kp KP_PLUS                             &kp LA(F2)    &kp LEFT  &kp DOWN   &kp RIGHT &kp PG_DN &kp K_APP
+&trans &kp KP_N0       &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp KP_DOT   &kp K_PLAY_PAUSE    &trans &email        &kp PSCRN &kp K_CALC &kp CAPS  &kp INS   &kp RGUI
                     &trans  &trans                                                                                &trans &trans   
                                               &trans &trans &trans             &trans &trans &trans
                                                      &trans &trans             &trans &trans
             >;
 
             sensor-bindings = 
-                <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_PREV C_NEXT>
+                <&inc_dec_kp K_PREV K_NEXT &inc_dec_kp PG_UP PG_DN>
                 ;
         };
 
@@ -169,11 +182,11 @@ AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS
 // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
 //                     |      |      |      |        |  |       |      |       |       |
             bindings = <
-&bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &bt BT_SEL 5    &kp KP_NUMLOCK  &trans    &trans    &trans       &trans
-&out OUT_TOG &trans       &trans       &trans       &trans       &trans                   &kp KP_DIVIDE   &kp KP_N7       &kp KP_N8 &kp KP_N9 &kp KP_MINUS &trans
-&bootloader  &trans       &trans       &trans       &trans       &trans                   &kp KP_MULTIPLY &kp KP_N4       &kp KP_N5 &kp KP_N6 &kp KP_PLUS  &trans
-&trans       &trans       &trans       &trans       &trans       &trans   &trans   &trans &kp KP_N0       &kp KP_N1       &kp KP_N2 &kp KP_N3 &kp KP_DOT   &trans
-                              &trans  &trans                                                                            &trans &trans   
+&bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3  &bt BT_SEL 4             &bt BT_SEL 5    &kp KP_NUMLOCK  &trans    &trans    &trans       &trans
+&out OUT_TOG &trans           &kp K_BACK        &kp K_STOP        &kp K_FORWARD &trans                   &kp KP_DIVIDE   &kp KP_N7       &kp KP_N8 &kp KP_N9 &kp KP_MINUS &trans
+&bootloader  &trans           &kp K_PREV        &kp K_PLAY_PAUSE  &kp K_NEXT    &trans                   &kp KP_MULTIPLY &kp KP_N4       &kp KP_N5 &kp KP_N6 &kp KP_PLUS  &trans
+&trans       &trans           &trans            &trans            &trans        &trans   &trans   &trans &kp KP_N0       &kp KP_N1       &kp KP_N2 &kp KP_N3 &kp KP_DOT   &trans
+                                 &trans  &hw_soft_off                                                                          &trans &trans   
                                                           &trans &trans &trans        &trans &trans &trans
                                                           &trans &trans               &trans &trans
             >;
