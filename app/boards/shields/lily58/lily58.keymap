@@ -65,9 +65,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&kp LCTRL>,
-                <&macro_pause_for_release>,
-                <&kp U &kp R &kp A &kp DOT &kp M &kp A &kp K &kp O &kp V &kp E &kp N &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M 
+                <&macro_wait_time 20>,
+                <&macro_press &kp LCTRL>, <&macro_pause_for_release>, <&macro_release &kp LCTRL>, <&macro_pause_for_release>,
+                <&macro_tap &kp U &kp R &kp A &kp DOT &kp M &kp A &kp K &kp O &kp V &kp E &kp N &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M 
                 &kp TAB>;
 
             label = "EMAIL";
