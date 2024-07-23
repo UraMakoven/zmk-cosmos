@@ -278,8 +278,9 @@ AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS
 
 
 // west build -d build/left -b nice_nano_v2 -- -DSHIELD=lily58_left
-// west build -d build/right -b nice_nano -- -DSHIELD=lily58_right
+// west build -d build/right -b nice_nano_v2 -- -DSHIELD=lily58_right
 
-// слева nine nano v2, права nice nano
+// слева nine nano v2, права nice nano... 
+// ***уже не актуально. почему то обе стали v2
 // если надо поменять плату надо добавить ключ для очистки предыдущего компила
 // west build -p -b build/.......
