@@ -97,6 +97,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <2 3>;
             bindings = <&kp ESC>;
+            layers = <0>;
         };
 
         combo_menu {
@@ -104,6 +105,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <8 9>;
             bindings = <&kp K_APP>;
+            layers = <0>;
         };
 
         combo_stab {
@@ -111,6 +113,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <14 15>;
             bindings = <&kp LS(TAB)>;
+            layers = <0>;
         };
 
         combo_tab {
@@ -118,6 +121,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <15 16>;
             bindings = <&kp TAB>;
+            layers = <0>;
         };
 
         combo_ctrltab {
@@ -125,6 +129,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <38 39>;
             bindings = <&kp LC(TAB)>;
+            layers = <0>;
         };
 
         combo_alttab {
@@ -132,34 +137,39 @@
             require-prior-idle-ms = <150>;
             key-positions = <39 40>;
             bindings = <&kp LA(TAB)>;
+            layers = <0>;
         };
 
         combo_home {
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
-            key-positions = <19 20>;
+            key-positions = <18 19>;
             bindings = <&kp HOME>;
+            layers = <0>;
         };
 
         combo_end {
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
-            key-positions = <20 21>;
+            key-positions = <30 31>;
             bindings = <&kp END>;
+            layers = <0>;
         };
 
         combo_left {
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
-            key-positions = <31 32>;
+            key-positions = <19 20>;
             bindings = <&kp LEFT>;
+            layers = <0>;
         };
 
         combo_right {
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
-            key-positions = <32 33>;
+            key-positions = <21 20>;
             bindings = <&kp RIGHT>;
+            layers = <0>;
         };
 
         combo_up {
@@ -167,6 +177,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <31 20>;
             bindings = <&kp UP>;
+            layers = <0>;
         };
 
         combo_down {
@@ -174,6 +185,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <31 46>;
             bindings = <&kp DOWN>;
+            layers = <0>;
         };
 
         combo_pgup {
@@ -181,6 +193,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <33 20>;
             bindings = <&kp PG_UP>;
+            layers = <0>;
         };
 
         combo_pgdn {
@@ -188,6 +201,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <33 46>;
             bindings = <&kp PG_DN>;
+            layers = <0>;
         };
 
         combo_downhome {
@@ -195,6 +209,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <45 46>;
             bindings = <&downhome>;
+            layers = <0>;
         };
 
         combo_downend {
@@ -202,6 +217,7 @@
             require-prior-idle-ms = <150>;
             key-positions = <46 47>;
             bindings = <&downend>;
+            layers = <0>;
         };
     };
   
@@ -215,19 +231,21 @@
 // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
+//             bindings = <
+// AS(GRAVE)    AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)                               AS(N6) AS(N7) AS(   N8) AS( N9) AS(  N0) AS(RBKT)
+// AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS( Y) AS( U) AS(    I) AS(  O) AS(   P) AS(LBKT)
+// &mt LGUI ESC AS( A) AS( S) AS( D) AS( F) AS( G)                               AS( H) AS( J) AS(    K) AS(  L) AS(SEMI) AS( SQT)
+// &layer2      AS( Z) AS( X) AS( C) AS( V) AS( B) &kp K_MUTE    &hm K_APP ENTER AS( N) AS( M) AS(COMMA) AS(DOT) AS(FSLH) AS(BSLH)
+//         &kp KP_DIVIDE  &kp KP_MULTIPLY                                                          AS(MINUS) AS(EQUAL)
+//                              &layer1 &kp LSHFT &kp LALT               &hm RALT DEL &hm RSHFT BSPC &lt 1 ENTER
+//                                     &kp LCTRL &kp SPACE              &kp SPACE &kp RCTRL
+//             >;
+
             bindings = <
-AS(GRAVE)    AS(N1) AS(N2) AS(N3) AS(N4) AS(N5)                               AS(N6) AS(N7) AS(   N8) AS( N9) AS(  N0) AS(RBKT)
-AS(  TAB)    AS( Q) AS( W) AS( E) AS( R) AS( T)                               AS( Y) AS( U) AS(    I) AS(  O) AS(   P) AS(LBKT)
-&mt LGUI ESC AS( A) AS( S) AS( D) AS( F) AS( G)                               AS( H) AS( J) AS(    K) AS(  L) AS(SEMI) AS( SQT)
-&layer2      AS( Z) AS( X) AS( C) AS( V) AS( B) &kp K_MUTE    &hm K_APP ENTER AS( N) AS( M) AS(COMMA) AS(DOT) AS(FSLH) AS(BSLH)
-        &kp KP_DIVIDE  &kp KP_MULTIPLY                                                          AS(MINUS) AS(EQUAL)
-                             &layer1 &kp LSHFT &kp LALT               &hm RALT DEL &hm RSHFT BSPC &lt 1 ENTER
-                                    &kp LCTRL &kp SPACE              &kp SPACE &kp RCTRL
+&as LS(GRAVE) GRAVE  &as LS(N1) N1  &as LS(N2) N2  &as LS(N3) N3  &as LS(N4) N4  &as LS(N5) N5  &as LS(N6) N6  &as LS(N7) N7  &as LS(N8) N8  &as LS(N9) N9  &as LS(N0) N0  &as LS(RBKT) RBKT  &as LS(TAB) TAB  &as LS(Q) Q  &as LS(W) W  &as LS(E) E  &as LS(R) R  &as LS(T) T  &as LS(Y) Y  &as LS(U) U  &as LS(I) I  &as LS(O) O  &as LS(P) P  &as LS(LBKT) LBKT  &mt LGUI ESC  &as LS(A) A  &as LS(S) S  &as LS(D) D  &as LS(F) F  &as LS(G) G  &as LS(H) H  &as LS(J) J  &as LS(K) K  &as LS(L) L  &as LS(SEMI) SEMI  &as LS(SQT) SQT  &layer2  &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(V) V  &as LS(B) B  &kp K_MUTE  &hm K_APP ENTER  &as LS(N) N  &as LS(M) M  &as LS(COMMA) COMMA  &as LS(DOT) DOT  &as LS(FSLH) FSLH  &as LS(BSLH) BSLH  &kp KP_DIVIDE  &kp KP_MULTIPLY  &as LS(MINUS) MINUS  &as LS(EQUAL) EQUAL  &layer1  &kp LSHFT  &kp LALT  &hm RALT DEL  &hm RSHFT BSPC  &lt 1 ENTER  &kp LCTRL  &kp SPACE  &kp SPACE  &kp RCTRL
             >;
 
-            sensor-bindings = 
-                <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp UP DOWN>
-                ;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp UP DOWN>;
         };
 
         lower_layer {
