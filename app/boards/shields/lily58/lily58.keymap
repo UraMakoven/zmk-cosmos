@@ -14,11 +14,11 @@
 
 / {
     behaviors {
-        hw_soft_off: hw_soft_off {
-            compatible = "zmk,behavior-soft-off";
-            #binding-cells = <0>;
-            hold-time-ms = <5000>;
-        };
+        // hw_soft_off: hw_soft_off {
+        //     compatible = "zmk,behavior-soft-off";
+        //     #binding-cells = <0>;
+        //     hold-time-ms = <5000>;
+        // };
 
         as: auto_shift {
             compatible = "zmk,behavior-hold-tap";
@@ -54,11 +54,11 @@
         };
     };
 
-    soft_off_behavior_key {
-        compatible = "zmk,gpio-key-behavior-trigger";
-        bindings = <&hw_soft_off>;
-        key = <&wakeup_key>;
-    };
+    // soft_off_behavior_key {
+    //     compatible = "zmk,gpio-key-behavior-trigger";
+    //     bindings = <&hw_soft_off>;
+    //     key = <&wakeup_key>;
+    // };
 
     macros {
         email: email {
@@ -93,129 +93,129 @@
         compatible = "zmk,combos";
 
         combo_esc {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <2 3>;
             bindings = <&kp ESC>;
             layers = <0>;
         };
 
         combo_menu {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <8 9>;
             bindings = <&kp K_APP>;
             layers = <0>;
         };
 
         combo_stab {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <14 15>;
             bindings = <&kp LS(TAB)>;
             layers = <0>;
         };
 
         combo_tab {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <15 16>;
             bindings = <&kp TAB>;
             layers = <0>;
         };
 
         combo_ctrltab {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <38 39>;
             bindings = <&kp LC(TAB)>;
             layers = <0>;
         };
 
         combo_alttab {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <39 40>;
             bindings = <&kp LA(TAB)>;
             layers = <0>;
         };
 
         combo_home {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
-            key-positions = <18 19>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
+            key-positions = <19 20>;
             bindings = <&kp HOME>;
             layers = <0>;
         };
 
         combo_end {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
-            key-positions = <30 31>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
+            key-positions = <20 21>;
             bindings = <&kp END>;
             layers = <0>;
         };
 
         combo_left {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
-            key-positions = <19 20>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
+            key-positions = <19 32>;
             bindings = <&kp LEFT>;
             layers = <0>;
         };
 
         combo_right {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
-            key-positions = <21 20>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
+            key-positions = <21 32>;
             bindings = <&kp RIGHT>;
             layers = <0>;
         };
 
         combo_up {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <31 20>;
             bindings = <&kp UP>;
             layers = <0>;
         };
 
         combo_down {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <31 46>;
             bindings = <&kp DOWN>;
             layers = <0>;
         };
 
         combo_pgup {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <33 20>;
             bindings = <&kp PG_UP>;
             layers = <0>;
         };
 
         combo_pgdn {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
             key-positions = <33 46>;
             bindings = <&kp PG_DN>;
             layers = <0>;
         };
 
         combo_downhome {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
-            key-positions = <45 46>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
+            key-positions = <45 32>;
             bindings = <&downhome>;
             layers = <0>;
         };
 
         combo_downend {
-            timeout-ms = <50>;
-            require-prior-idle-ms = <150>;
-            key-positions = <46 47>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <250>;
+            key-positions = <47 32>;
             bindings = <&downend>;
             layers = <0>;
         };
@@ -242,7 +242,7 @@
 //             >;
 
             bindings = <
-&as LS(GRAVE) GRAVE  &as LS(N1) N1  &as LS(N2) N2  &as LS(N3) N3  &as LS(N4) N4  &as LS(N5) N5  &as LS(N6) N6  &as LS(N7) N7  &as LS(N8) N8  &as LS(N9) N9  &as LS(N0) N0  &as LS(RBKT) RBKT  &as LS(TAB) TAB  &as LS(Q) Q  &as LS(W) W  &as LS(E) E  &as LS(R) R  &as LS(T) T  &as LS(Y) Y  &as LS(U) U  &as LS(I) I  &as LS(O) O  &as LS(P) P  &as LS(LBKT) LBKT  &mt LGUI ESC  &as LS(A) A  &as LS(S) S  &as LS(D) D  &as LS(F) F  &as LS(G) G  &as LS(H) H  &as LS(J) J  &as LS(K) K  &as LS(L) L  &as LS(SEMI) SEMI  &as LS(SQT) SQT  &layer2  &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(V) V  &as LS(B) B  &kp K_MUTE  &hm K_APP ENTER  &as LS(N) N  &as LS(M) M  &as LS(COMMA) COMMA  &as LS(DOT) DOT  &as LS(FSLH) FSLH  &as LS(BSLH) BSLH  &kp KP_DIVIDE  &kp KP_MULTIPLY  &as LS(MINUS) MINUS  &as LS(EQUAL) EQUAL  &layer1  &kp LSHFT  &kp LALT  &hm RALT DEL  &hm RSHFT BSPC  &lt 1 ENTER  &kp LCTRL  &kp SPACE  &kp SPACE  &kp RCTRL
+&as LS(GRAVE) GRAVE  &as LS(N1) N1  &as LS(N2) N2  &as LS(N3) N3  &as LS(N4) N4  &as LS(N5) N5  &as LS(N6) N6  &as LS(N7) N7  &as LS(N8) N8  &as LS(N9) N9  &as LS(N0) N0  &as LS(RBKT) RBKT  &as LS(TAB) TAB  &as LS(Q) Q  &as LS(W) W  &as LS(E) E  &as LS(R) R  &as LS(T) T  &as LS(Y) Y  &as LS(U) U  &as LS(I) I  &as LS(O) O  &as LS(P) P  &as LS(LBKT) LBKT  &hm LGUI ESC  &as LS(A) A  &as LS(S) S  &as LS(D) D  &as LS(F) F  &as LS(G) G  &as LS(H) H  &as LS(J) J  &as LS(K) K  &as LS(L) L  &as LS(SEMI) SEMI  &as LS(SQT) SQT  &layer2  &as LS(Z) Z  &as LS(X) X  &as LS(C) C  &as LS(V) V  &as LS(B) B  &kp K_MUTE  &hm K_APP ENTER  &as LS(N) N  &as LS(M) M  &as LS(COMMA) COMMA  &as LS(DOT) DOT  &as LS(FSLH) FSLH  &as LS(BSLH) BSLH  &kp KP_DIVIDE  &kp KP_MULTIPLY  &as LS(MINUS) MINUS  &as LS(EQUAL) EQUAL  &layer1  &kp LSHFT  &kp LALT  &hm RALT DEL  &hm RSHFT BSPC  &lt 1 ENTER  &kp LCTRL  &kp SPACE  &kp SPACE  &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp UP DOWN>;
@@ -282,7 +282,7 @@
 &out OUT_TOG &trans           &kp K_BACK        &kp K_STOP        &kp K_FORWARD &trans                             &kp KP_DIVIDE   &kp KP_N7       &kp KP_N8 &kp KP_N9 &kp KP_MINUS &trans
 &sys_reset   &trans           &kp K_PREV        &kp K_PLAY_PAUSE  &kp K_NEXT    &trans                             &kp KP_MULTIPLY &kp KP_N4       &kp KP_N5 &kp KP_N6 &kp KP_PLUS  &sys_reset
 &trans       &trans           &trans            &trans            &trans        &trans   &bootloader   &bootloader &kp KP_N0       &kp KP_N1       &kp KP_N2 &kp KP_N3 &kp KP_DOT   &trans
-                                &bt BT_CLR   &hw_soft_off                                                                          &trans &trans   
+                                &bt BT_CLR   &trans                                                                                   &trans &trans   
                                                           &trans &trans &trans        &trans &trans &trans
                                                           &trans &trans               &trans &trans
             >;
